@@ -1,0 +1,45 @@
+<section class="moviepage">
+     <div ng-controller="ListController">
+  <div class="search">
+    <h1>Movies DB</h1>
+    <label>search: </label>
+    <input ng-model="query" placeholder="Search for movies" autofocus>
+
+    <label class="formgroup">by:
+      <select ng-model="movieOrder">
+        <option value="title">title</option>
+        <option value="director">director</option>
+      </select>
+    </label>
+    <br>
+    <label class="formgroup"> Type the title: </label>
+    <input class="form-control" ng-model="newMovietitle" placeholder="Type in the title.">
+    <label class="formgroup"> Type the Director's name: </label>
+      <input class="form-control" ng-model="newDirector" placeholder="Type in the director.">
+      <label class="formgroup"> Type in the description: </label>
+      <input class="form-control" ng-model="newDescription" placeholder="Type in the description of the movie.">
+      <label class="formgroup"> Actors list: </label>
+      <input class="form-control" ng-model="newActors" placeholder="Type in the name of the actors.">
+      <button class="btn btn-success btn-block" ng-click="submitUser()">Register</button>
+    <label class="formgroup">
+      <input type="radio" ng-model="direction" title="direction" checked>
+      ascending
+     </label>
+    <label class="formgroup">
+      <input type="radio" ng-model="direction" title="direction" value="reverse">
+      descending
+    </label>
+  </div>
+    <ul class="movielist" ng-show="query">
+    <li ng-animate="'animate'" class="movie cf" ng-repeat="item in movies | filter: query | orderBy: movieOrder:direction">
+		<div class="info">
+          <h2>{{item.title}}</h2>
+          <h3>Director: {{item.director}}</h3>
+		  <h4>Actors list: {{item.actors}}</h4>
+		  <h3>Description: {{item.description}}</h3>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+</section>
